@@ -1,5 +1,6 @@
 class Settings {
   String id;
+  int prankMode;
   int randomSpies;
   int randomList;
   int coopSpies;
@@ -10,6 +11,7 @@ class Settings {
 
   Settings({
     required this.id,
+    required this.prankMode,
     required this.randomSpies,
     required this.coopSpies,
     required this.fixedSpies,
@@ -22,6 +24,7 @@ class Settings {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'prank_mode': prankMode,
       'random_spies': randomSpies,
       'coop_spies': coopSpies,
       'fixed_spies': fixedSpies,

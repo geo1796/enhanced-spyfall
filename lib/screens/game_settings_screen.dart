@@ -35,17 +35,38 @@ class GameSettingsScreen extends StatelessWidget {
         activeColor: theme.colorScheme.secondary,
         inactiveThumbColor: theme.colorScheme.primary,
         inactiveTrackColor: theme.colorScheme.tertiary,
+        value: _settingsProvider.prankMode,
+        onChanged: _settingsProvider.setPrankMode,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Text(
+          'Prank mode ' +
+              (_settingsProvider.prankMode
+                  ? 'ON\n(1 out of 5 chance that all players are spies)'
+                  : 'OFF'),
+          textAlign: TextAlign.center,
+          style: theme.textTheme.headline6,
+        ),
+      ),
+      Switch(
+        activeColor: theme.colorScheme.secondary,
+        inactiveThumbColor: theme.colorScheme.primary,
+        inactiveTrackColor: theme.colorScheme.tertiary,
         value: _settingsProvider.coopSpies,
         onChanged: _settingsProvider.setCoopSpies,
       ),
       Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            'Cooperative spies : ' + (_settingsProvider.coopSpies ? 'ON' : 'OFF'),
-            textAlign: TextAlign.center,
-            style: theme.textTheme.headline6,
-          ),
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Text(
+          'Cooperative spies ' +
+              (_settingsProvider.coopSpies
+                  ? 'ON\n(spies know each other)'
+                  : 'OFF'),
+          textAlign: TextAlign.center,
+          style: theme.textTheme.headline6,
         ),
+      ),
       Switch(
         activeColor: theme.colorScheme.secondary,
         inactiveThumbColor: theme.colorScheme.primary,

@@ -14,6 +14,7 @@ class SettingsProvider with ChangeNotifier {
       if (storedSettings.isEmpty) {
         _settings = Settings(
           id: '0',
+          prankMode: 0,
           randomSpies: 0,
           coopSpies: 0,
           fixedSpies: 1,
@@ -42,6 +43,20 @@ class SettingsProvider with ChangeNotifier {
     repository.updateSettings(_settings).then((_) => notifyListeners());
   }
 
+  bool get prankMode {
+    return _settings.prankMode == 1;
+  }
+
+  void setPrankMode(bool newValue) {
+    if (newValue) {
+      _settings.prankMode = 1;
+      _settings.coopSpies = 0;
+    } else {
+      _settings.prankMode = 0;
+    }
+    repository.updateSettings(_settings).then((_) => notifyListeners());
+  }
+
   bool get randomList {
     return _settings.randomList == 1;
   }
@@ -56,7 +71,12 @@ class SettingsProvider with ChangeNotifier {
   }
 
   void setCoopSpies(bool newValue) {
-    newValue ? _settings.coopSpies = 1 : _settings.coopSpies = 0;
+    if (newValue) {
+      _settings.coopSpies = 1;
+      _settings.prankMode = 0;
+    } else {
+      _settings.coopSpies = 0;
+    }
     repository.updateSettings(_settings).then((_) => notifyListeners());
   }
 

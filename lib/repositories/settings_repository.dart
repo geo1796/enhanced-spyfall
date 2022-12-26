@@ -14,6 +14,7 @@ class SettingsRepository {
         maps.length,
         (i) => Settings(
               id: maps[i]['id'],
+              prankMode: maps[i]['prank_mode'],
               randomSpies: maps[i]['random_spies'],
               coopSpies: maps[i]['coop_spies'],
               fixedSpies: maps[i]['fixed_spies'],

@@ -59,21 +59,33 @@ class _PlayingScreenState extends State<PlayingScreen> {
         return SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.75,
-          child: ListView.builder(
-            itemCount: _gameProvider.spies.length,
-            itemBuilder: (_, i) {
-              return Card(
-                elevation: 6,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    _gameProvider.spies[i].name,
-                    textAlign: TextAlign.center,
+          child: _gameProvider.isPrank
+              ? Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: Column(
+                      children: [
+                        Text('You have been pranked !'),
+                        Text('Everyone is spy :)'),
+                      ],
+                    ),
                   ),
+              )
+              : ListView.builder(
+                  itemCount: _gameProvider.spies.length,
+                  itemBuilder: (_, i) {
+                    return Card(
+                      elevation: 6,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          _gameProvider.spies[i].name,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
         );
       }),
     );

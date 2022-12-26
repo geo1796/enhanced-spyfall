@@ -17,6 +17,7 @@ class GameProvider with ChangeNotifier {
   late bool _spiesRevealed;
   late bool _locationsRevealed;
   Location? _previousLocation;
+  late bool _isPrank;
 
   @override
   String toString() {
@@ -25,6 +26,10 @@ class GameProvider with ChangeNotifier {
 
   void updatePreviousLocation() {
     _previousLocation = _secretLocation;
+  }
+
+  bool get isPrank {
+    return _isPrank;
   }
 
   Location? get previousLocation {
@@ -92,6 +97,7 @@ class GameProvider with ChangeNotifier {
     PlayersProvider playersProvider,
     LocationsProvider locationsProvider,
   ) {
+    _isPrank = false;
     _spiesRevealed = false;
     _locationsRevealed = false;
     _checkedPlayers = [];
@@ -118,6 +124,10 @@ class GameProvider with ChangeNotifier {
           );
           break;
         }
+    }
+    if (settingsProvider.prankMode && Random().nextInt(5) == 0) {
+      _spies = [...players];
+      _isPrank = true;
     }
     switch (settingsProvider.randomList) {
       case false:

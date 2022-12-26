@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
-import '../models/locations.dart';
 import '../providers/locations_provider.dart';
 import '../providers/settings_provider.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/location_list_item.dart';
-import '../widgets/player_list_item.dart';
 import 'locations_details_screen.dart';
 import 'new_locations_list_screen.dart';
 

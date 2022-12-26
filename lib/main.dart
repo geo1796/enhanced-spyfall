@@ -39,7 +39,7 @@ void main() async {
         )
         .then(
           (_) => db.execute(
-            'CREATE TABLE settings(id TEXT PRIMARY KEY, random_spies INT, coop_spies INT, fixed_spies INT, max_spies INT, min_spies INT, random_list INT, list_id TEXT, FOREIGN KEY(list_id) REFERENCES locations_lists(id));',
+            'CREATE TABLE settings(id TEXT PRIMARY KEY, prank_mode INT, random_spies INT, coop_spies INT, fixed_spies INT, max_spies INT, min_spies INT, random_list INT, list_id TEXT, FOREIGN KEY(list_id) REFERENCES locations_lists(id));',
           ),
         ),
     version: 1,
