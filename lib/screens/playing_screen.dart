@@ -60,17 +60,14 @@ class _PlayingScreenState extends State<PlayingScreen> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.75,
           child: _gameProvider.isPrank
-              ? Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Center(
-                    child: Column(
-                      children: [
-                        Text('You have been pranked !'),
-                        Text('Everyone is spy :)'),
-                      ],
+              ? Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 3 / 4,
+                    child: const Image(
+                      image: AssetImage('assets/prank.jpeg'),
                     ),
                   ),
-              )
+                )
               : ListView.builder(
                   itemCount: _gameProvider.spies.length,
                   itemBuilder: (_, i) {
@@ -220,19 +217,34 @@ class _PlayingScreenState extends State<PlayingScreen> {
                     width: double.infinity,
                     child: Card(
                       elevation: 6,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          _settingsProvider.randomSpies
-                              ? _settingsProvider.maxSpies >= 2
-                                  ? '${_settingsProvider.minSpies} ... ${_settingsProvider.maxSpies}\nspies'
-                                  : '${_settingsProvider.minSpies} ... ${_settingsProvider.maxSpies}\nspy'
-                              : _settingsProvider.fixedSpies >= 2
-                                  ? '${_settingsProvider.fixedSpies}\nspies'
-                                  : '${_settingsProvider.fixedSpies}\nspy',
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.headline6,
-                        ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Settings'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              _settingsProvider.randomSpies
+                                  ? _settingsProvider.maxSpies >= 2
+                                      ? '${_settingsProvider.minSpies} ... ${_settingsProvider.maxSpies} spies'
+                                      : '${_settingsProvider.minSpies} ... ${_settingsProvider.maxSpies} spy'
+                                  : _settingsProvider.fixedSpies >= 2
+                                      ? '${_settingsProvider.fixedSpies} spies'
+                                      : '${_settingsProvider.fixedSpies} spy',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Prank Mode ' + (_settingsProvider.prankMode ? 'ON' : 'OFF')),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('Cooperative Spies ' + (_settingsProvider.coopSpies ? 'ON' : 'OFF')),
+                          ),
+                        ],
                       ),
                     ),
                   ),
