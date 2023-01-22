@@ -221,8 +221,9 @@ class _PlayingScreenState extends State<PlayingScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text('Settings'),
+                            child: Text('Settings', style: theme.textTheme.headline6,),
                           ),
+                          const Divider(),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

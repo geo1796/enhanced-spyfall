@@ -164,7 +164,7 @@ class MyHomePage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       drawer: const AppDrawer(),
       appBar: AppBar(
-        title: const Text('Enhanced Spyfall'),
+        title: const Text('Better Spyfall'),
       ),
       body: Center(
         child: SizedBox(
